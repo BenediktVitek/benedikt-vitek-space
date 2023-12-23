@@ -47,7 +47,7 @@ public class MovieService {
             try (Response response = okHttpClient.newCall(request).execute();) {
                 if (response.isSuccessful() && response.body() != null) {
                     movieListDTO = objectMapper.readValue(response.body().string(), MovieListDTO.class);
-                    moviesWithRatings.add(newestRelease(movieListDTO));
+                    moviesWithRatings.add(movieListDTO.results().get(0));
                 }
             } catch (IOException e) {
                 System.out.println("Exception: " + e);
@@ -55,13 +55,6 @@ public class MovieService {
 
         }
         return moviesWithRatings;
-    }
-
-    public MovieDto newestRelease(MovieListDTO movieListDTO) {
-
-        return movieListDTO.results().stream()
-                .max(Comparator.comparing(MovieDto::id))
-                .orElse(null);
     }
 
 
