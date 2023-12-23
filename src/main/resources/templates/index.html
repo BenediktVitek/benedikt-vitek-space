@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+
+<ol>
+    <li th:each="el : ${movieList}">
+        <a th:href="'https://www.themoviedb.org/movie/' + ${el.id()}"
+           th:text="${el.title()} + ' Rating: ' + ${el.vote_average()}"></a>
+    </li>
+</ol>
+
+<ol>
+    <li th:each="el : ${movieList}" th:text="${el.title()}"></li>
+</ol>
 
 </body>
 </html>

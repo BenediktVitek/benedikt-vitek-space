@@ -7,6 +7,7 @@ import com.benediktvitek.ben.services.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class MainController {
     private final MovieService movieService;
 
     @GetMapping("/index")
-    public String index() {
+    public String index(Model model) {
         List<String> movies;
         List<MovieDto> moviesWithRatings = null;
         try {
@@ -36,16 +37,18 @@ public class MainController {
         try {
             moviesWithRatings = movieService.getRatedMovies(movies);
         } catch (IOException e) {
-            System.out.println("Exception: " + e.getMessage());;
+            System.out.println("Exception: " + e.getMessage());
         }
 
-        if(moviesWithRatings == null) {
+        if (moviesWithRatings == null) {
             System.out.println("No movies returned");
         } else {
-            for (MovieDto movie: moviesWithRatings) {
+            for (MovieDto movie : moviesWithRatings) {
                 System.out.println("ID: " + movie.id() + " , title: " + movie.title() + " , rating: " + movie.vote_average());
             }
         }
+
+        model.addAttribute("movieList", moviesWithRatings);
 
         return "index";
     }
