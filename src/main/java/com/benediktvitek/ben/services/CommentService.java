@@ -1,12 +1,15 @@
 package com.benediktvitek.ben.services;
 
+import com.benediktvitek.ben.dtos.responses.CommentDTO;
 import com.benediktvitek.ben.models.Comment;
 import com.benediktvitek.ben.repositories.CommentRepository;
-import com.benediktvitek.ben.repositories.CommentRespository;
-import com.benediktvitek.ben.repositories.UserMessageRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -25,5 +28,21 @@ public class CommentService {
         return true;
     }
 
-    public List<>
+    public List<CommentDTO> getAllCommentsDto() {
+        List<Comment> comments = commentRepository.findAll();
+        return comments.stream()
+                .map(comment -> new CommentDTO(comment))
+                .collect(Collectors.toList());
+    }
+
+    public List<CommentDTO> getAllDtoByAuthor(String name) {
+        List<Comment> comments = commentRepository.findAllByNameIgnoreCase(name);
+        return comments.stream()
+                .map(comment -> new CommentDTO(comment))
+                .collect(Collectors.toList());
+    }
+
+    public Optional<Comment> getById(Long id) {
+        return commentRepository.findById(id);
+    }
 }

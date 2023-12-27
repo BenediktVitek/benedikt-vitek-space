@@ -38,7 +38,7 @@ public class MovieService {
         for (String movie : movies) {
             String encodedMovie = encodeMovieName(movie);
             Request request = new Request.Builder()
-                    .url("https://api.themoviedb.org/3/search/movie?query=" + encodedMovie + "&include_adult=false&language=en-US&page=1")
+                     .url("https://api.themoviedb.org/3/search/movie?query=" + encodedMovie + "&include_adult=false&language=en-US&page=1")
                     .get()
                     .addHeader("accept", "application/json")
                     .addHeader("Authorization", token)

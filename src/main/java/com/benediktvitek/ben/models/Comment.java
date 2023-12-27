@@ -37,7 +37,7 @@ public class Comment {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd. MM. yyyy HH:mm");
-        return "Posted" + dateFormat.format(date);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+        return "Posted: " + dateFormat.format(date);
     }
 }
