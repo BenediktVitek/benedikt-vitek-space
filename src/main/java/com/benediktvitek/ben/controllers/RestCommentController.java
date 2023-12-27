@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CompletionException;
 
 @RestController
 @RequestMapping("/comments")
@@ -23,18 +24,30 @@ public class RestCommentController {
     public ResponseEntity<?> getAll() {
         List<CommentDTO> comments = commentService.getAllCommentsDto();
 
-        if(comments.isEmpty()) {
+        if (comments.isEmpty()) {
             return ResponseEntity.badRequest().body(new ErrorDTO("No comments found"));
         } else {
             return ResponseEntity.ok(new ListOfCommentsDTO(comments));
         }
     }
 
+    @GetMapping("/today")
+    public ResponseEntity<?> getAllFromToday() {
+        List<CommentDTO> comments = commentService.getAllDtoFromToday();
+
+        if (comments.isEmpty()) {
+            return ResponseEntity.badRequest().body(new ErrorDTO("No one commented today"));
+        } else {
+            return ResponseEntity.ok(new ListOfCommentsDTO(comments));
+        }
+
+    }
+
     @GetMapping("/users/{author}")
     public ResponseEntity<?> getAllByName(@PathVariable String author) {
         List<CommentDTO> comments = commentService.getAllDtoByAuthor(author);
 
-        if(comments.isEmpty()) {
+        if (comments.isEmpty()) {
             return ResponseEntity.badRequest().body(new ErrorDTO("No comments by " + author.toUpperCase() + " found"));
         } else {
             return ResponseEntity.ok(new ListOfCommentsDTO(comments));
@@ -43,12 +56,12 @@ public class RestCommentController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getAllByName(@PathVariable Long id) {
-       Optional<Comment> comment = commentService.getById(id);
+        Optional<Comment> comment = commentService.getById(id);
 
-       if(comment.isEmpty()) {
-           return ResponseEntity.badRequest().body(new ErrorDTO("No comment of ID: " + id));
-       } else {
-           return ResponseEntity.ok(new CommentDTO(comment.get()));
-       }
+        if (comment.isEmpty()) {
+            return ResponseEntity.badRequest().body(new ErrorDTO("No comment of ID: " + id));
+        } else {
+            return ResponseEntity.ok(new CommentDTO(comment.get()));
+        }
     }
 }

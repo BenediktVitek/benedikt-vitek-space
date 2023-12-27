@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -44,5 +45,13 @@ public class CommentService {
 
     public Optional<Comment> getById(Long id) {
         return commentRepository.findById(id);
+    }
+
+    public List<CommentDTO> getAllDtoFromToday() {
+        Date today = new Date(System.currentTimeMillis());
+        List<Comment> comments = commentRepository.findAllByDateBetween(today, today);
+        return comments.stream()
+                .map(comment -> new CommentDTO(comment))
+                .collect(Collectors.toList());
     }
 }

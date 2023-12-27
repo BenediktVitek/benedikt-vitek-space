@@ -23,11 +23,15 @@ public class Comment {
     private String message;
     @Column(length = 20)
     private String name;
+    @Temporal(TemporalType.DATE)
     private Date date;
+    @Temporal(TemporalType.TIME)
+    private Date time;
     private boolean dummyData;
 
     public Comment(String message, String name, boolean dummyData) {
         this.date = new Date();
+        this.time = new Date();
         this.message = message;
         this.name = name;
         this.dummyData = dummyData;
@@ -36,8 +40,8 @@ public class Comment {
     public String getRegularDate() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-        return "Posted: " + dateFormat.format(date);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        SimpleDateFormat dateFormatTime = new SimpleDateFormat("HH:mm");
+        return "Posted: " + dateFormat.format(date) + " " + dateFormatTime.format(time);
     }
 }
