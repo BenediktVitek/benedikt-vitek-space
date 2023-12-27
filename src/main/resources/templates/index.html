@@ -25,5 +25,28 @@
     <button>Send</button>
 </form>
 
+<div id="APIs">
+    <form id="allAuthors" method="get" th:action="@{/comments/all}" target="_blank">
+        <button>All comments</button>
+    </form>
+
+    <form id="oneAuthorForm" method="get" target="_blank">
+        <label for="commentAuthor">Author:</label>
+        <input type="text" id="commentAuthor" />
+        <button onclick="submitForm()">Submit</button>
+    </form>
+</div>
+
+<script th:inline="javascript">
+    function submitForm() {
+        var commentAuthorValue = document.getElementById('commentAuthor').value;
+
+        document.getElementById('oneAuthorForm').action = '/comments/users/' + commentAuthorValue;
+
+        document.getElementById('oneAuthorForm').submit();
+    }
+</script>
+
+
 </body>
 </html>
