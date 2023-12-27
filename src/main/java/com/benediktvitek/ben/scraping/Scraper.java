@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -20,16 +19,16 @@ import java.util.List;
 @Component
 public class Scraper {
 
-    private final String URL = "https://www.netflix.com/tudum/top10/czech-republic";
+    private final String URL = "https://www.netflix.com/tudum/top10/united-states";
     private final String ELEMENT = ".tbl-cell-name";
 
     public String scrapeSite() throws IOException {
+
         URL obj = new URL(URL);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
         connection.setRequestProperty("User-Agent", "Mozilla/5,0");
-        int responseCode = connection.getResponseCode();
-        System.out.println("Response code:" + responseCode);
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
         String inputLine;
         StringBuilder response = new StringBuilder();
 
@@ -52,9 +51,9 @@ public class Scraper {
         return movies;
     }
 
-    public String encodeMovieName(String name) {
-        String encoded = URLEncoder.encode(name, StandardCharsets.UTF_8);
-        return encoded.replace("+", "%20");
+    public List<String> getScrapedMovies() throws IOException {
+        return parseHtml(scrapeSite());
     }
+
 
 }

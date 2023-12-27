@@ -17,5 +17,11 @@
     <li th:each="el : ${movieList}" th:text="${el.title()}"></li>
 </ol>
 
+<form>
+    <label for="comment" th:name="comment">
+        <textarea id="comment" ></textarea>
+    </label>
+</form>
+
 </body>
 </html>
