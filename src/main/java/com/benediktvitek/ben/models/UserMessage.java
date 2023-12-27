@@ -20,7 +20,9 @@ public class UserMessage {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private UUID id;
+    @Column(length = 140)
     private String message;
+    @Column(length = 20)
     private String name;
     private Date date;
 

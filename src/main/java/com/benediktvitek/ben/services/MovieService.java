@@ -50,7 +50,7 @@ public class MovieService {
                     moviesWithRatings.add(movieListDTO.results().get(0));
                 }
             } catch (IOException e) {
-                System.out.println("Exception: " + e);
+                System.out.println("Exception: " + e.getMessage());
             }
         }
         return moviesWithRatings;
