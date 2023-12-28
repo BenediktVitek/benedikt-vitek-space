@@ -3,6 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <style>
+        #display {
+            border: 1px solid black;
+            width: max-content;
+            padding: 0.5rem;
+            height: 200px; /* Set a fixed height for the box */
+            overflow-y: auto; /* Enable vertical scrolling if content exceeds box height */
+        }
+    </style>
 </head>
 <body>
 
@@ -30,23 +40,64 @@
         <button>All comments</button>
     </form>
 
+    <form id="todayPosts" method="get" target="_blank" th:action="@{/comments/today}">
+        <button>Show posts from today</button>
+    </form>
+
     <form id="oneAuthorForm" method="get" target="_blank">
         <label for="commentAuthor">Author:</label>
-        <input type="text" id="commentAuthor" />
-        <button onclick="submitForm()">Submit</button>
+        <input type="text" id="commentAuthor" autocomplete="off"/>
+        <button onclick="submitByAuthorForm()">Submit</button>
+    </form>
+
+    <form id="byIdForm" method="get" target="_blank">
+        <label for="commentId">ID:</label>
+        <input type="text" id="commentId" min="1" autocomplete="off"/>
+        <button onclick="submitByIdForm()">ID submit</button>
     </form>
 </div>
 
 <script th:inline="javascript">
-    function submitForm() {
+    function submitByAuthorForm() {
+
+        event.preventDefault();
+
         var commentAuthorValue = document.getElementById('commentAuthor').value;
+
+        if (commentAuthorValue.trim() === "") {
+            alert("Please enter a value for the author.");
+            return false;
+        }
 
         document.getElementById('oneAuthorForm').action = '/comments/users/' + commentAuthorValue;
 
         document.getElementById('oneAuthorForm').submit();
-    }
-</script>
 
+        document.getElementById('commentAuthor').value = '';
+
+    }
+
+    function submitByIdForm() {
+        event.preventDefault();
+
+        var commentIdValue = document.getElementById('commentId').value;
+
+        var isValidInput = /^[1-9]\d*$/.test(commentIdValue)
+
+        if (!isValidInput) {
+            alert("Please enter valid ID (whole positive number higher than 0).");
+            return false;
+        }
+
+        document.getElementById('byIdForm').action = '/comments/' + commentIdValue;
+
+        document.getElementById('byIdForm').submit();
+
+        document.getElementById('commentId').value = '';
+
+    }
+
+</script>
 
 </body>
 </html>

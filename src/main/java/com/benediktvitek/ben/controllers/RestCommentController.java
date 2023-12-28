@@ -45,6 +45,12 @@ public class RestCommentController {
 
     @GetMapping("/users/{author}")
     public ResponseEntity<?> getAllByName(@PathVariable String author) {
+
+        if(author == null || author.isEmpty()) {
+            return ResponseEntity.badRequest().body(new ErrorDTO("No author entered"));
+
+        }
+
         List<CommentDTO> comments = commentService.getAllDtoByAuthor(author);
 
         if (comments.isEmpty()) {
