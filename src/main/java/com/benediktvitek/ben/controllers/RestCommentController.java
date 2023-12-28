@@ -14,7 +14,7 @@ import java.util.Optional;
 import java.util.concurrent.CompletionException;
 
 @RestController
-@RequestMapping("/comments")
+@RequestMapping("/api/comments")
 @RequiredArgsConstructor
 public class RestCommentController {
 

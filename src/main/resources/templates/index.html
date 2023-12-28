@@ -3,16 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <style>
-        #display {
-            border: 1px solid black;
-            width: max-content;
-            padding: 0.5rem;
-            height: 200px; /* Set a fixed height for the box */
-            overflow-y: auto; /* Enable vertical scrolling if content exceeds box height */
-        }
-    </style>
+    <script src="/scripts/index.js"></script>
 </head>
 <body>
 
@@ -36,11 +27,11 @@
 </form>
 
 <div id="APIs">
-    <form id="allAuthors" method="get" th:action="@{/comments/all}" target="_blank">
+    <form id="allAuthors" method="get" th:action="@{/api/comments/all}" target="_blank">
         <button>All comments</button>
     </form>
 
-    <form id="todayPosts" method="get" target="_blank" th:action="@{/comments/today}">
+    <form id="todayPosts" method="get" target="_blank" th:action="@{/api/comments/today}">
         <button>Show posts from today</button>
     </form>
 
@@ -57,47 +48,6 @@
     </form>
 </div>
 
-<script th:inline="javascript">
-    function submitByAuthorForm() {
-
-        event.preventDefault();
-
-        var commentAuthorValue = document.getElementById('commentAuthor').value;
-
-        if (commentAuthorValue.trim() === "") {
-            alert("Please enter a value for the author.");
-            return false;
-        }
-
-        document.getElementById('oneAuthorForm').action = '/comments/users/' + commentAuthorValue;
-
-        document.getElementById('oneAuthorForm').submit();
-
-        document.getElementById('commentAuthor').value = '';
-
-    }
-
-    function submitByIdForm() {
-        event.preventDefault();
-
-        var commentIdValue = document.getElementById('commentId').value;
-
-        var isValidInput = /^[1-9]\d*$/.test(commentIdValue)
-
-        if (!isValidInput) {
-            alert("Please enter valid ID (whole positive number higher than 0).");
-            return false;
-        }
-
-        document.getElementById('byIdForm').action = '/comments/' + commentIdValue;
-
-        document.getElementById('byIdForm').submit();
-
-        document.getElementById('commentId').value = '';
-
-    }
-
-</script>
 
 </body>
 </html>
