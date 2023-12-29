@@ -51,16 +51,17 @@
 </div>
 
 <div id="loggingIn">
-    <div th:if="${authenticated}">
-
+    <div th:unless="${#authentication.name eq 'anonymousUser'}">
+        <a th:href="@{/logout}">Logout</a>
     </div>
-    <div th:unless="${authenticated}">
+    <div th:if="${#authentication.name eq 'anonymousUser'}">
         <form id="loginForm" method="post" th:action="@{/login}">
             <label for="loginUsername">Username:</label>
             <input type="text" id="loginUsername" th:name="username" required>
 
             <label for="loginPassword">Password:</label>
             <input type="password" id="loginPassword" th:name="password" required>
+            <p th:if="${loginFailed != null}" th:text="${loginFailed}" style="color: red"></p>
 
             <button>Login</button>
         </form>
@@ -71,8 +72,12 @@
 
             <label for="registerPassword">Password:</label>
             <input type="password" id="registerPassword" th:name="password" required>
+            <p th:if="${registerFailed != null}" th:text="${registerFailed}" style="color: red"></p>
 
-            <button>Login</button>
+            <label for="passwordCheck"> Repeat password </label>
+            <input type="password" id="passwordCheck" required>
+
+            <button onclick="checkFields()">Register</button>
 
         </form>
     </div>

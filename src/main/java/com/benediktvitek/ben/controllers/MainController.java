@@ -1,7 +1,5 @@
 package com.benediktvitek.ben.controllers;
 
-import com.benediktvitek.ben.dtos.requests.LoginDTO;
-import com.benediktvitek.ben.dtos.requests.RegisterDTO;
 import com.benediktvitek.ben.dtos.responses.MovieDTO;
 import com.benediktvitek.ben.services.CommentService;
 import com.benediktvitek.ben.services.MovieService;
@@ -15,8 +13,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -39,18 +35,15 @@ public class MainController {
             System.out.println("Exception: " + e.getMessage());
         }
 
-        if (inputFlashMap != null && inputFlashMap.get("error") != null) {
-            System.out.println(inputFlashMap.get("error"));
-            model.addAttribute("error", inputFlashMap.get("error"));
+        if (inputFlashMap != null) {
+            if(inputFlashMap.get("registerMessage") != null) {
+                model.addAttribute("registerFailed", inputFlashMap.get("registerMessage"));
+            } else if (inputFlashMap.get("loginMessage") != null) {
+                model.addAttribute("loginFailed", inputFlashMap.get("loginMessage"));
+            }
         }
 
         model.addAttribute("movieList", moviesWithRatings);
-
-        if (request.getUserPrincipal() == null) {
-            model.addAttribute("loginDto", new LoginDTO("", ""));
-            model.addAttribute("registerDTO", new RegisterDTO("", ""));
-        }
-
 
         return "index";
     }

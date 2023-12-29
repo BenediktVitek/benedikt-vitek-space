@@ -36,3 +36,19 @@ function submitByIdForm() {
     document.getElementById('commentId').value = '';
 
 }
+
+function checkFields() {
+    var firstInput = document.getElementById('registerPassword').value;
+    var secondInput = document.getElementById('passwordCheck').value;
+
+    if(firstInput === secondInput) {
+        return;
+    }
+
+    document.getElementById('registerPassword').value = '';
+    document.getElementById('passwordCheck').value = '';
+
+    event.preventDefault();
+    alert("Password mismatch");
+
+}
