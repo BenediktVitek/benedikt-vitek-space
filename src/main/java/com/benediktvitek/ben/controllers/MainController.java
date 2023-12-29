@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
@@ -36,7 +37,7 @@ public class MainController {
         }
 
         if (inputFlashMap != null) {
-            if(inputFlashMap.get("registerMessage") != null) {
+            if (inputFlashMap.get("registerMessage") != null) {
                 model.addAttribute("registerFailed", inputFlashMap.get("registerMessage"));
             } else if (inputFlashMap.get("loginMessage") != null) {
                 model.addAttribute("loginFailed", inputFlashMap.get("loginMessage"));
@@ -49,10 +50,11 @@ public class MainController {
     }
 
     @PostMapping("/add-comment")
-    public String addComment(String comment, String author, RedirectAttributes redirectAttributes) {
+    public String addComment(String comment,
+                             RedirectAttributes redirectAttributes) {
 
         try {
-            commentService.saveMessage(comment, author);
+            commentService.saveMessage(comment);
         } catch (BadRequestException e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }

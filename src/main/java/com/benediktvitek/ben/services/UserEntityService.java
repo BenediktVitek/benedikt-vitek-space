@@ -23,4 +23,11 @@ public class UserEntityService {
         return userEntityRepository.save(user);
     }
 
+    public UserEntity save(UserEntity user) {
+        return userEntityRepository.save(user);
+    }
+
+    public UserEntity getByName(String username) {
+        return userEntityRepository.getByUsername(username);
+    }
 }

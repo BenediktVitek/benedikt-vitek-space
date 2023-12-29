@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
-    List<Comment> findAllByNameIgnoreCase(String name);
+    List<Comment> findAllByUserEntityUsernameIgnoreCase(String name);
 
     List<Comment> findAllByDateBetween(Date startDate, Date endDate);
 }

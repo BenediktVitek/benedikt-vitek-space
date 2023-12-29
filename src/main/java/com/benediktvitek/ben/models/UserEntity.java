@@ -22,6 +22,9 @@ public class UserEntity {
     private String username;
     private String password;
 
+    @OneToMany(mappedBy = "userEntity", orphanRemoval = true)
+    private Set<Comment> comments = new LinkedHashSet<>();
+
     @ManyToMany //could be many to one as right now only USER role exists
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "userEntity_id", referencedColumnName = "id"),

@@ -23,8 +23,6 @@
 <form id="comment-section" method="post" th:action="@{/add-comment}">
     <label for="comment">Comment: </label>
     <textarea id="comment" th:name="comment" required maxlength="140" autocomplete="off"></textarea>
-    <label for="author">Author: </label>
-    <input id="author" type="text" th:name="author" required maxlength="20" autocomplete="off">
     <button>Send</button>
 </form>
 

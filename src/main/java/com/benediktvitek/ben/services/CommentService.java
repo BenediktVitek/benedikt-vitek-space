@@ -2,9 +2,11 @@ package com.benediktvitek.ben.services;
 
 import com.benediktvitek.ben.dtos.responses.CommentDTO;
 import com.benediktvitek.ben.models.Comment;
+import com.benediktvitek.ben.models.UserEntity;
 import com.benediktvitek.ben.repositories.CommentRepository;
-import lombok.RequiredArgsConstructor;
 import org.apache.coyote.BadRequestException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -13,19 +15,36 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class CommentService {
 
     private final CommentRepository commentRepository;
+    private final UserEntityService userEntityService;
 
-    public boolean saveMessage(String comment, String author) throws BadRequestException {
+    public CommentService(CommentRepository commentRepository, UserEntityService userEntityService) {
+        this.commentRepository = commentRepository;
+        this.userEntityService = userEntityService;
+    }
 
-        if (comment == null || comment.isEmpty() || comment.length() > 140) {
+    public boolean saveMessage(String message) throws BadRequestException {
+
+        if (message == null || message.isEmpty() || message.length() > 140) {
             throw new BadRequestException("Comment cannot be empty and can have max. 140 characters");
-        } else if (author == null || author.isEmpty() || author.length() > 20) {
-            throw new BadRequestException("Author cannot be empty and can have max. 20 characters");
         }
-        commentRepository.save(new Comment(comment, author, false));
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserEntity loggedUser;
+        Comment comment;
+
+        if (!authentication.getName().equals("anonymousUser")) {
+            loggedUser = userEntityService.getByName(authentication.getName());
+        } else {
+            loggedUser = userEntityService.getByName("anonymous");
+        }
+        comment = new Comment(message, loggedUser);
+
+        loggedUser.getComments().add(comment);
+        userEntityService.save(loggedUser);
+        commentRepository.save(comment);
         return true;
     }
 
@@ -37,7 +56,7 @@ public class CommentService {
     }
 
     public List<CommentDTO> getAllDtoByAuthor(String name) {
-        List<Comment> comments = commentRepository.findAllByNameIgnoreCase(name);
+        List<Comment> comments = commentRepository.findAllByUserEntityUsernameIgnoreCase(name);
         return comments.stream()
                 .map(comment -> new CommentDTO(comment))
                 .collect(Collectors.toList());
