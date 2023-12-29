@@ -1,5 +1,7 @@
 package com.benediktvitek.ben.controllers;
 
+import com.benediktvitek.ben.dtos.requests.LoginDTO;
+import com.benediktvitek.ben.dtos.requests.RegisterDTO;
 import com.benediktvitek.ben.dtos.responses.MovieDTO;
 import com.benediktvitek.ben.services.CommentService;
 import com.benediktvitek.ben.services.MovieService;
@@ -24,6 +26,7 @@ public class MainController {
 
     private final MovieService movieService;
     private final CommentService commentService;
+
     @GetMapping({"/", "/index", ""})
     public String index(Model model, HttpServletRequest request) {
 
@@ -36,12 +39,18 @@ public class MainController {
             System.out.println("Exception: " + e.getMessage());
         }
 
-        if(inputFlashMap != null && inputFlashMap.get("error") != null) {
-            System.out.println(RequestContextUtils.getInputFlashMap(request).get("error"));
-            model.addAttribute("error", RequestContextUtils.getInputFlashMap(request).get("error") );
+        if (inputFlashMap != null && inputFlashMap.get("error") != null) {
+            System.out.println(inputFlashMap.get("error"));
+            model.addAttribute("error", inputFlashMap.get("error"));
         }
 
         model.addAttribute("movieList", moviesWithRatings);
+
+        if (request.getUserPrincipal() == null) {
+            model.addAttribute("loginDto", new LoginDTO("", ""));
+            model.addAttribute("registerDTO", new RegisterDTO("", ""));
+        }
+
 
         return "index";
     }

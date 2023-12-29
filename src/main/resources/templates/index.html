@@ -7,6 +7,8 @@
 </head>
 <body>
 
+<h1 th:text="'Hello ' + ${#authentication.getName()}"></h1>
+
 <ol>
     <li th:each="el : ${movieList}">
         <a th:href="'https://www.themoviedb.org/movie/' + ${el.id()}"
@@ -46,6 +48,35 @@
         <input type="text" id="commentId" min="1" autocomplete="off"/>
         <button onclick="submitByIdForm()">ID submit</button>
     </form>
+</div>
+
+<div id="loggingIn">
+    <div th:if="${authenticated}">
+
+    </div>
+    <div th:unless="${authenticated}">
+        <form id="loginForm" method="post" th:action="@{/login}">
+            <label for="loginUsername">Username:</label>
+            <input type="text" id="loginUsername" th:name="username" required>
+
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" th:name="password" required>
+
+            <button>Login</button>
+        </form>
+
+        <form id="registerForm" method="post" th:action="@{/register}">
+            <label for="registerUsername">Username</label>
+            <input type="text" id="registerUsername" th:name="username">
+
+            <label for="registerPassword">Password:</label>
+            <input type="password" id="registerPassword" th:name="password" required>
+
+            <button>Login</button>
+
+        </form>
+    </div>
+
 </div>
 
 

@@ -20,11 +20,24 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable);
         http.authorizeHttpRequests(
-                authRequest ->
-                        authRequest
-                                .requestMatchers("/**")
-                                .permitAll()
-        );
+                        authRequest ->
+                                authRequest
+                                        .requestMatchers("/**")
+                                        .permitAll()
+                )
+                .formLogin(
+                        formLogin ->
+                                formLogin
+                                        .loginPage("/index.html")
+                                        .defaultSuccessUrl("/index", true)
+                                        .failureUrl("/index")
+                )
+                .logout(
+                        logout ->
+                                logout
+                                        .deleteCookies("JSESSIONID")
+                                        .logoutSuccessUrl("/index")
+                );
         return http.build();
     }
 
