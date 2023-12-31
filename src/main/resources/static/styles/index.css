@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    background: linear-gradient(180deg, #240972 0%, #BC6EF1 100%);
+    background: linear-gradient(180deg, #240972 0%, #9b4dd4 100%);
     min-height: 100vh;
     word-break: break-word;
     font-family: 'Bebas Neue', sans-serif;
@@ -55,20 +55,20 @@ body {
 
 }
 
-.about-me-area{
+.about-me-area {
     min-height: 100vh;
     display: flex;
     align-items: center;
 }
 
-.about-me-container{
+.about-me-container {
     width: 100%;
     height: 35vh;
     align-items: center;
     display: flex;
 }
 
-.about-me-text{
+.about-me-text {
     text-align: justify;
     font-size: x-large;
     position: relative;
@@ -79,11 +79,59 @@ body {
     color: wheat;
 }
 
-.about-site-area{
+.about-site-area {
     min-height: 100vh;
     display: flex;
     align-items: center;
 }
+
+.my-skills-area {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.my-skills-container {
+    width: 100%;
+    height: 35vh;
+    margin-left: 20%;
+    margin-right: 20%;
+    color: wheat;
+    font-size: x-large;
+}
+
+.skills-java {
+    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.skills-web {
+    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.skills-others {
+    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.skill-buttons{
+    margin-bottom: 15px;
+}
+
+.card {
+    display: flex;
+    box-sizing: border-box;
+    border: 4px solid wheat;
+    align-items: center;
+    justify-content: center;
+    color: wheat;
+    background-color: black;
+}
+
 .btn {
     display: inline-block;
     border-style: solid;
@@ -91,5 +139,41 @@ body {
     padding: 15px 25px;
     border-radius: 4px;
     text-decoration: none;
+}
+
+
+.category-button {
+    background-color: black;
+    border: 2px solid wheat;
+    border-radius: 30px;
+    box-shadow: #422800 4px 4px 0 0;
+    color: wheat;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.category-button:hover {
+    background-color: #7d6981;
+}
+
+.category-button:active {
+    box-shadow: #422800 2px 2px 0 0;
+    transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+    .category-button {
+        min-width: 120px;
+        padding: 0 25px;
+    }
 }
 

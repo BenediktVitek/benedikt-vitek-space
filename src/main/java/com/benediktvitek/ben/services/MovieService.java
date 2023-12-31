@@ -28,9 +28,23 @@ public class MovieService {
 
 
     public List<MovieDTO> getTopTenMoviesDto() throws IOException {
-
+        int numTries = 3;
         List<MovieDTO> moviesWithRatings = new ArrayList<>();
-        List<String> movies = scraper.getScrapedMovies();
+        List<String> movies = new ArrayList<>();
+        while (true) {
+            try {
+                movies = scraper.getScrapedMovies();
+                break;
+            } catch (Exception e ) {
+                if (--numTries == 0) throw e;
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException interruptedException) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }
+
         OkHttpClient okHttpClient = new OkHttpClient();
         ObjectMapper objectMapper = new ObjectMapper();
         MovieListDTO movieListDTO;
@@ -50,7 +64,7 @@ public class MovieService {
                     moviesWithRatings.add(movieListDTO.results().get(0));
                 }
             } catch (IOException e) {
-                System.out.println("Exception: " + e.getMessage());
+                throw new RuntimeException("Exception movie service: " + e.getMessage());
             }
         }
         return moviesWithRatings;

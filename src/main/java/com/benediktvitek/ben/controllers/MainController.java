@@ -30,6 +30,7 @@ public class MainController {
         List<MovieDTO> moviesWithRatings = null;
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
 
+
         try {
             moviesWithRatings = movieService.getTopTenMoviesDto();
         } catch (IOException e) {

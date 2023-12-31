@@ -74,20 +74,33 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('my-skills-btn').addEventListener('click', function (e) {
-        e.preventDefault();
-        scrollToTarget('my-skills-area');
+document.addEventListener("DOMContentLoaded", function () {
+    const javaButton = document.getElementById('java-button');
+    const webButton = document.getElementById('web-button');
+    const othersButton = document.getElementById('others-button');
+
+    javaButton.addEventListener('click', function () {
+        showCategory('skills-java', javaButton);
+    });
+
+    webButton.addEventListener('click', function () {
+        showCategory('skills-web', webButton);
+    });
+
+    othersButton.addEventListener('click', function () {
+        showCategory('skills-others', othersButton);
     });
 });
 
+function showCategory(category, button) {
+    const skillCards = document.querySelectorAll('.card');
+    const categories = document.querySelectorAll('.category-button')
+    skillCards.forEach(card => card.style.display = 'none');
+    categories.forEach(categoryButton => categoryButton.style.backgroundColor = 'black')
 
-function showCategory(category) {
-    const rows = document.querySelectorAll('#skills-table tr:not(:first-child)');
-    rows.forEach(row => row.style.display = 'none');
+    const categoryCards = document.querySelectorAll(`.${category} .card`);
 
-    // Show rows with the selected category
-    const categoryRows = document.querySelectorAll(`.${category}`);
-    categoryRows.forEach(row => row.style.display = '')
+    categoryCards.forEach(card => card.style.display = 'flex');
+    button.style.backgroundColor = '#7d6981';
+
 }
-

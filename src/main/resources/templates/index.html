@@ -52,37 +52,69 @@
 <div id="my-skills-area" class="my-skills-area">
 
     <div class="my-skills-container">
-        <div>
-            <button class="category-button" onclick="showCategory('Java')">Java Development</button>
-            <button class="category-button" onclick="showCategory('Web')">Web Technologies</button>
-            <button class="category-button" onclick="showCategory('Others')">Others</button>
+
+        <h1>Skills</h1>
+        <div class="skill-buttons">
+            <button class="category-button" id="java-button" role="button" style="background: #7d6981">Java Development</button>
+            <button class="category-button" id="web-button" role="button">Web Technologies</button>
+            <button class="category-button" id="others-button" role="button">Others</button>
         </div>
 
-        <table id="skills-table">
-            <tr>
-                <th>Skills</th>
-            </tr>
-            <tr class="Java">
-                <td>Java</td>
-                <td>Spring Boot</td>
-                <td>Spring Security</td>
-                <td>MVC Architecture</td>
-                <td>Hibernate</td>
-            </tr>
-            <tr class="Web" style="display: none;">
-                <td>HTML</td>
-                <td>CSS</td>
-                <td>JavaScript</td>
-                <td>Thymeleaf</td>
-            </tr>
-            <tr class="Others" style="display: none;">
-                <td>Gradle</td>
-                <td>Docker</td>
-                <td>JUnit</td>
-                <td>MySQL</td>
-                <td>JPA (including Hibernate)</td>
-            </tr>
-        </table>
+        <div class="skills">
+
+            <div class="skills-java">
+                <div class="card">
+                    <h3>Java</h3>
+                </div>
+                <div class="card">
+                    <h3>Spring Boot</h3>
+                </div>
+                <div class="card">
+                    <h3>Spring Security</h3>
+                </div>
+                <div class="card">
+                    <h3>MVC Architecture</h3>
+                </div>
+                <div class="card">
+                    <h3>Hibernate</h3>
+                </div>
+                <div class="card">
+                    <h3>Rest API</h3>
+                </div>
+            </div>
+
+            <div class="skills-web" >
+                <div class="card" style="display: none">
+                    <h3>HTML</h3>
+                </div>
+                <div class="card" style="display: none">
+                    <h3>CSS</h3>
+                </div>
+                <div class="card" style="display: none">
+                    <h3>JavaScript</h3>
+                </div>
+                <div class="card" style="display: none">
+                    <h3>Thymeleaf</h3>
+                </div>
+            </div>
+
+            <div class="skills-others" >
+                <div class="card" style="display: none">
+                    <h3>Gradle</h3>
+                </div>
+                <div class="card" style="display: none">
+                    <h3>Docker</h3>
+                </div>
+                <div class="card" style="display: none">
+                    <h3>Junit</h3>
+                </div>
+                <div class="card" style="display: none">
+                    <h3>SQL</h3>
+                </div>
+            </div>
+
+
+        </div>
     </div>
 
 </div>
