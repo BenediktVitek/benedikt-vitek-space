@@ -52,3 +52,30 @@ function checkFields() {
     alert("Password mismatch");
 
 }
+
+function scrollToTarget(targetId) {
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('about-me-btn').addEventListener('click', function (e) {
+        e.preventDefault();
+        scrollToTarget('about-me-area');
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('about-site-btn').addEventListener('click', function (e) {
+        e.preventDefault();
+        scrollToTarget('about-site-area');
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('my-skills-btn').addEventListener('click', function (e) {
+        e.preventDefault();
+        scrollToTarget('my-skills-area');
+    });
+});

@@ -4,10 +4,56 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="/scripts/index.js"></script>
+    <link rel="stylesheet" href="/styles/index.css">
+
 </head>
 <body>
+<section class="header"></section>
+<div class="intro-area">
+    <div class="intro-container">
+        <div class="intro-text">
+            <p>Hello! My name is</p>
+            <h1>Benedikt Vítek</h1>
+            <p>and I am</p>
+            <h2>Junior Java backend developer</h2>
+            <a style="color:rgba(255, 255, 255, 0.85);border-color:wheat;background-color:black" target="__blank"
+               rel="noopener noreferrer" class="btn" href="">Get Resume</a>
+            <a id="about-me-btn"
+               style="margin-left:15px;color:rgba(255, 255, 255, 0.85);border-color:wheat;background-color:black"
+               target="" rel="" class="btn" href="">About Me</a>
+        </div>
+        <div class="intro-photo">
+            <img id="my-photo" src="/ben.jpg" alt="Benedikt Vitek">
+        </div>
+    </div>
+</div>
+<div class="about-me-area" id="about-me-area">
+    <div class="about-me-container">
+        <div class="about-me-text">
+            <h2>About me</h2>
+            <p> In the first half of the year 2023, I made one of the biggest decisions of my life. I quit a job that I
+                expected to do for the rest of my life. I realized my passion lies elsewhere, in problem-solving, in
+                creating, in learning. That is how I started to learn coding. At first, by myself, completing online
+                courses and making my own little projects. After that, I enrolled in a 5-month long super-intensive Java
+                backend course. And thanks to that, I am now able to show you some of my skills here! So feel
+                free to check the rest of this site and try some of the features I have implemented. </p>
+            <a style="color:rgba(255, 255, 255, 0.85);border-color:wheat;background-color:black" target="__blank"
+               rel="noopener noreferrer" class="btn" href="">Get Resume</a>
+            <a id="about-my-skills-btn"
+               style="margin-left:15px;color:rgba(255, 255, 255, 0.85);border-color:wheat;background-color:black"
+               target="" rel="" class="btn" href="">About my skills</a>
+            <a id="about-site-btn"
+               style="margin-left:15px;color:rgba(255, 255, 255, 0.85);border-color:wheat;background-color:black"
+               target="" rel="" class="btn" href="">About this site</a>
+        </div>
+    </div>
+</div>
 
-<h1 th:text="'Hello ' + ${#authentication.getName()}"></h1>
+<div id="my-skills-area"></div>
+
+<div id="about-site-area" class="about-site-area">
+
+</div>
 
 <ol>
     <li th:each="el : ${movieList}">
@@ -66,7 +112,7 @@
 
         <form id="registerForm" method="post" th:action="@{/register}">
             <label for="registerUsername">Username</label>
-            <input type="text" id="registerUsername" th:name="username">
+            <input type="text" id="registerUsername" th:name="username" required>
 
             <label for="registerPassword">Password:</label>
             <input type="password" id="registerPassword" th:name="password" required>
@@ -81,7 +127,6 @@
     </div>
 
 </div>
-
 
 </body>
 </html>
