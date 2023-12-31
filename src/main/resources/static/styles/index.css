@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    background: linear-gradient(180deg, #240972 0%, #9b4dd4 100%);
+    background: linear-gradient(180deg, #240972 0%, #7f54f3 100%);
     min-height: 100vh;
     word-break: break-word;
     font-family: 'Bebas Neue', sans-serif;
@@ -83,6 +83,25 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    height: fit-content;
+}
+
+.about-site-container {
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+    display: flex;
+}
+
+.about-site-text {
+    text-align: justify;
+    font-size: x-large;
+    position: relative;
+    margin-left: 10%;
+    margin-right: 15%;
+    width: 75%;
+    height: 100%;
+    color: black;
 }
 
 .my-skills-area {
@@ -96,6 +115,7 @@ body {
     height: 35vh;
     margin-left: 20%;
     margin-right: 20%;
+    margin-bottom: 20%;
     color: wheat;
     font-size: x-large;
 }
@@ -118,7 +138,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
 }
 
-.skill-buttons{
+.skill-buttons {
     margin-bottom: 15px;
 }
 
@@ -130,6 +150,18 @@ body {
     justify-content: center;
     color: wheat;
     background-color: black;
+}
+
+.showcase-area {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.showcase-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
 }
 
 .btn {

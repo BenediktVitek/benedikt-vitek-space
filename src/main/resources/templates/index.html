@@ -37,11 +37,9 @@
                 courses and making my own little projects. After that, I enrolled in a 5-month long super-intensive Java
                 backend course. And thanks to that, I am now able to show you some of my skills here! So feel
                 free to check the rest of this site and try some of the features I have implemented. </p>
-            <a style="color:rgba(255, 255, 255, 0.85);border-color:wheat;background-color:black" target="__blank"
-               rel="noopener noreferrer" class="btn" href="">Get Resume</a>
-            <a id="about-my-skills-btn"
+            <a id="my-skills-btn"
                style="margin-left:15px;color:rgba(255, 255, 255, 0.85);border-color:wheat;background-color:black"
-               target="" rel="" class="btn" href="">About my skills</a>
+               target="" rel="" class="btn" href="">My skills</a>
             <a id="about-site-btn"
                style="margin-left:15px;color:rgba(255, 255, 255, 0.85);border-color:wheat;background-color:black"
                target="" rel="" class="btn" href="">About this site</a>
@@ -55,7 +53,9 @@
 
         <h1>Skills</h1>
         <div class="skill-buttons">
-            <button class="category-button" id="java-button" role="button" style="background: #7d6981">Java Development</button>
+            <button class="category-button" id="java-button" role="button" style="background: #7d6981">Java
+                Development
+            </button>
             <button class="category-button" id="web-button" role="button">Web Technologies</button>
             <button class="category-button" id="others-button" role="button">Others</button>
         </div>
@@ -83,7 +83,7 @@
                 </div>
             </div>
 
-            <div class="skills-web" >
+            <div class="skills-web">
                 <div class="card" style="display: none">
                     <h3>HTML</h3>
                 </div>
@@ -98,7 +98,7 @@
                 </div>
             </div>
 
-            <div class="skills-others" >
+            <div class="skills-others">
                 <div class="card" style="display: none">
                     <h3>Gradle</h3>
                 </div>
@@ -112,7 +112,9 @@
                     <h3>SQL</h3>
                 </div>
             </div>
-
+            <a id="about-site-btn-two"
+               style="margin-top: 15px;color:rgba(255, 255, 255, 0.85);border-color:wheat;background-color:black"
+               target="" rel="" class="btn" href="">About this site</a>
 
         </div>
     </div>
@@ -120,79 +122,126 @@
 </div>
 
 <div id="about-site-area" class="about-site-area">
-
+    <div class="about-site-container">
+        <div class="about-site-text">
+            <h2>About this site</h2>
+            <p> The main purpose of creating this website is to showcase some of my skills. While you can certainly
+                check my GitHub to see the projects I have been working on or view my CV to see what I claim to know, I
+                also wanted something a bit more interactive to demonstrate that I can deliver. Since I have primarily
+                been learning Java, I have developed some interactive sections that you can explore in the showcase part
+                of this site.
+                <br><br>
+                I would like to walk you through these sections. There are five different modules available for
+                interaction, with some interconnected elements. Starting from the left, the first module displays the
+                top ten most-watched movies on Netflix in the US, obtained through web scraping. In the second module, I
+                use a third-party API (The Movie Database) to fetch information about movies identified by the web
+                scraper. This information is utilized to display the ratings of the movies and create links to TMDB.
+                <br><br>
+                The third module allows you to register a new account or log in with an account you've registered
+                before. Don't worry; you don't have to create an extremely complicated password, as I didn't want to
+                burden you with this feature. However, it's still advisable to use a strong password. New users are
+                saved in the database, and every password is encoded. I implemented this part using Spring Security.
+                <br><br>
+                The fourth module enables you to leave comments on this site, either anonymously or using a created
+                user. This creates a many-to-many relationship between users and their messages. The last module
+                utilizes my created API endpoints for reading and creating. Unfortunately, update and remove endpoints
+                were not implemented in this project, but if you would really miss them, then I can always implement
+                them. If you use one of the buttons in this module, the site will respond with JSON according to your
+                choice.
+                <br><br>
+                If you discover any bugs on this site, please do not hesitate to contact me! Enjoy this little
+                interactive showcase of some of the skills I have claimed to possess. 😊 </p>
+        </div>
+    </div>
 </div>
 
-<ol>
-    <li th:each="el : ${movieList}">
-        <a th:href="'https://www.themoviedb.org/movie/' + ${el.id()}"
-           th:text="${el.title()} + ' Rating: ' + ${el.vote_average()}"></a>
-    </li>
-</ol>
+<div class="showcase-area">
+    <div class="showcase-container">
+        <div class="scraped-movies">
+            <ol>
+                <li th:each="el : ${movieList}" th:text="${el.title()}"></li>
+            </ol>
+        </div>
+        <div class="tmdb-info">
+            <ol>
 
-<ol>
-    <li th:each="el : ${movieList}" th:text="${el.title()}"></li>
-</ol>
+                <li th:each="el : ${movieList}" style="display: flex">
+                    <p th:text="'Rating: ' + ${el.vote_average()}"
+                       style=" margin-top: 0;margin-right: 1rem; margin-bottom: 3px;"></p>
+                    <a th:href="'https://www.themoviedb.org/movie/' + ${el.id()}"
+                       th:text="'Visit here'" style="margin-left: auto"></a>
+                </li>
+            </ol>
+        </div>
+        <div class="users">
+            <div class="login">
+                <div th:unless="${#authentication.name eq 'anonymousUser'}">
+                    <a th:href="@{/logout}">Logout</a>
+                </div>
+                <div th:if="${#authentication.name eq 'anonymousUser'}">
+                    <form id="loginForm" method="post" th:action="@{/login}">
+                        <label for="loginUsername">Username:</label>
+                        <input type="text" id="loginUsername" th:name="username" required>
 
-<form id="comment-section" method="post" th:action="@{/add-comment}">
-    <label for="comment">Comment: </label>
-    <textarea id="comment" th:name="comment" required maxlength="140" autocomplete="off"></textarea>
-    <button>Send</button>
-</form>
+                        <label for="loginPassword">Password:</label>
+                        <input type="password" id="loginPassword" th:name="password" required>
+                        <p th:if="${loginFailed != null}" th:text="${loginFailed}" style="color: red"></p>
 
-<div id="APIs">
-    <form id="allAuthors" method="get" th:action="@{/api/comments/all}" target="_blank">
-        <button>All comments</button>
-    </form>
+                        <button>Login</button>
+                    </form>
 
-    <form id="todayPosts" method="get" target="_blank" th:action="@{/api/comments/today}">
-        <button>Show posts from today</button>
-    </form>
 
-    <form id="oneAuthorForm" method="get" target="_blank">
-        <label for="commentAuthor">Author:</label>
-        <input type="text" id="commentAuthor" autocomplete="off"/>
-        <button onclick="submitByAuthorForm()">Submit</button>
-    </form>
+                </div>
+                <div class="register">
+                    <form id="registerForm" method="post" th:action="@{/register}">
+                        <label for="registerUsername">Username</label>
+                        <input type="text" id="registerUsername" th:name="username" required>
 
-    <form id="byIdForm" method="get" target="_blank">
-        <label for="commentId">ID:</label>
-        <input type="text" id="commentId" min="1" autocomplete="off"/>
-        <button onclick="submitByIdForm()">ID submit</button>
-    </form>
-</div>
+                        <label for="registerPassword">Password:</label>
+                        <input type="password" id="registerPassword" th:name="password" required>
+                        <p th:if="${registerFailed != null}" th:text="${registerFailed}" style="color: red"></p>
 
-<div id="loggingIn">
-    <div th:unless="${#authentication.name eq 'anonymousUser'}">
-        <a th:href="@{/logout}">Logout</a>
+                        <label for="passwordCheck"> Repeat password </label>
+                        <input type="password" id="passwordCheck" required>
+
+                        <button onclick="checkFields()">Register</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="comments">
+            <form id="comment-section" method="post" th:action="@{/add-comment}">
+                <label for="comment">Comment: </label>
+                <textarea id="comment" th:name="comment" required maxlength="140" autocomplete="off"></textarea>
+                <button>Send</button>
+            </form>
+        </div>
+        <div class="API">
+            <div id="APIs">
+                <form id="allAuthors" method="get" th:action="@{/api/comments/all}" target="_blank">
+                    <button>All comments</button>
+                </form>
+
+                <form id="todayPosts" method="get" target="_blank" th:action="@{/api/comments/today}">
+                    <button>Show posts from today</button>
+                </form>
+
+                <form id="oneAuthorForm" method="get" target="_blank">
+                    <label for="commentAuthor">Author:</label>
+                    <input type="text" id="commentAuthor" autocomplete="off"/>
+                    <button onclick="submitByAuthorForm()">Submit</button>
+                </form>
+
+                <form id="byIdForm" method="get" target="_blank">
+                    <label for="commentId">ID:</label>
+                    <input type="text" id="commentId" min="1" autocomplete="off"/>
+                    <button onclick="submitByIdForm()">ID submit</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <div th:if="${#authentication.name eq 'anonymousUser'}">
-        <form id="loginForm" method="post" th:action="@{/login}">
-            <label for="loginUsername">Username:</label>
-            <input type="text" id="loginUsername" th:name="username" required>
 
-            <label for="loginPassword">Password:</label>
-            <input type="password" id="loginPassword" th:name="password" required>
-            <p th:if="${loginFailed != null}" th:text="${loginFailed}" style="color: red"></p>
-
-            <button>Login</button>
-        </form>
-
-        <form id="registerForm" method="post" th:action="@{/register}">
-            <label for="registerUsername">Username</label>
-            <input type="text" id="registerUsername" th:name="username" required>
-
-            <label for="registerPassword">Password:</label>
-            <input type="password" id="registerPassword" th:name="password" required>
-            <p th:if="${registerFailed != null}" th:text="${registerFailed}" style="color: red"></p>
-
-            <label for="passwordCheck"> Repeat password </label>
-            <input type="password" id="passwordCheck" required>
-
-            <button onclick="checkFields()">Register</button>
-
-        </form>
-    </div>
 
 </div>
 
