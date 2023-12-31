@@ -41,7 +41,7 @@ function checkFields() {
     var firstInput = document.getElementById('registerPassword').value;
     var secondInput = document.getElementById('passwordCheck').value;
 
-    if(firstInput === secondInput) {
+    if (firstInput === secondInput) {
         return;
     }
 
@@ -56,9 +56,10 @@ function checkFields() {
 function scrollToTarget(targetId) {
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
+        targetElement.scrollIntoView({behavior: 'smooth'});
     }
 }
+
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('about-me-btn').addEventListener('click', function (e) {
         e.preventDefault();
@@ -79,3 +80,14 @@ document.addEventListener('DOMContentLoaded', function () {
         scrollToTarget('my-skills-area');
     });
 });
+
+
+function showCategory(category) {
+    const rows = document.querySelectorAll('#skills-table tr:not(:first-child)');
+    rows.forEach(row => row.style.display = 'none');
+
+    // Show rows with the selected category
+    const categoryRows = document.querySelectorAll(`.${category}`);
+    categoryRows.forEach(row => row.style.display = '')
+}
+

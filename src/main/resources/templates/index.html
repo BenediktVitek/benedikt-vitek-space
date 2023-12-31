@@ -49,7 +49,43 @@
     </div>
 </div>
 
-<div id="my-skills-area"></div>
+<div id="my-skills-area" class="my-skills-area">
+
+    <div class="my-skills-container">
+        <div>
+            <button class="category-button" onclick="showCategory('Java')">Java Development</button>
+            <button class="category-button" onclick="showCategory('Web')">Web Technologies</button>
+            <button class="category-button" onclick="showCategory('Others')">Others</button>
+        </div>
+
+        <table id="skills-table">
+            <tr>
+                <th>Skills</th>
+            </tr>
+            <tr class="Java">
+                <td>Java</td>
+                <td>Spring Boot</td>
+                <td>Spring Security</td>
+                <td>MVC Architecture</td>
+                <td>Hibernate</td>
+            </tr>
+            <tr class="Web" style="display: none;">
+                <td>HTML</td>
+                <td>CSS</td>
+                <td>JavaScript</td>
+                <td>Thymeleaf</td>
+            </tr>
+            <tr class="Others" style="display: none;">
+                <td>Gradle</td>
+                <td>Docker</td>
+                <td>JUnit</td>
+                <td>MySQL</td>
+                <td>JPA (including Hibernate)</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
 
 <div id="about-site-area" class="about-site-area">
 
