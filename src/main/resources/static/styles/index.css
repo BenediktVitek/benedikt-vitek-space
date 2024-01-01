@@ -80,7 +80,7 @@ body {
 
 #my-photo {
     height: 100%;
-    width: 100%;
+    width: 90%;
     border: solid grey 10px;
     border-radius: 20px;
     filter: grayscale(100%);
@@ -88,7 +88,7 @@ body {
 
 #my-photo:hover {
     width: 110%;
-    height: 110%;
+    height: 99%;
     filter: grayscale(0%);
     border: solid black 10px;
     transition-duration: 1s;
