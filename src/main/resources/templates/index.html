@@ -9,6 +9,20 @@
 </head>
 <body>
 <section class="header">
+    <div class="contacts">
+        <a>Email: Benedikt.Vitek@gmail.com</a>
+        <a>Phone number: +420 605 551 650</a>
+        <a href="https://www.linkedin.com/in/benedikt-v%C3%ADtek-45a86014a/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/Herrsir" target="_blank">GitHub</a>
+    </div>
+    <div class="links">
+        <a id="header-about-me-button" target="" rel="" href="">About me</a>
+        <a id="header-skills-button" target="" rel="" href="">skills</a>
+        <a id="header-about-site-button" target="" rel="" href="">About this site</a>
+        <a id="header-showcase-button" target="" rel="" href="">Skill showcase</a>
+        <a style="border-radius: 10px; border: solid wheat; padding: 5px">Get resume</a>
+    </div>
+
 
 </section>
 <div class="intro-area">
@@ -18,14 +32,13 @@
             <h1>Benedikt Vítek</h1>
             <p>and I am</p>
             <h2>Junior Java backend developer</h2>
-            <a style="color:rgba(255, 255, 255, 0.85);border-color:wheat;background-color:black" target="__blank"
+            <a target="__blank"
                rel="noopener noreferrer" class="btn" href="">Get Resume</a>
             <a id="about-me-btn"
-               style="margin-left:15px;color:rgba(255, 255, 255, 0.85);border-color:wheat;background-color:black"
                target="" rel="" class="btn" href="">About Me</a>
         </div>
         <div class="intro-photo">
-            <img id="my-photo" src="/ben.jpg" alt="Benedikt Vitek">
+            <img id="my-photo" src="/me.jpg" alt="Benedikt Vitek">
         </div>
     </div>
 </div>
@@ -40,10 +53,8 @@
                 backend course. And thanks to that, I am now able to show you some of my skills here! So feel
                 free to check the rest of this site and try some of the features I have implemented. </p>
             <a id="my-skills-btn"
-               style="margin-left:15px;color:rgba(255, 255, 255, 0.85);border-color:wheat;background-color:black"
                target="" rel="" class="btn" href="">My skills</a>
             <a id="about-site-btn"
-               style="margin-left:15px;color:rgba(255, 255, 255, 0.85);border-color:wheat;background-color:black"
                target="" rel="" class="btn" href="">About this site</a>
         </div>
     </div>
@@ -114,8 +125,7 @@
                     <h3>SQL</h3>
                 </div>
             </div>
-            <a id="about-site-btn-two"
-               style="margin-top: 15px;color:rgba(255, 255, 255, 0.85);border-color:wheat;background-color:black"
+            <a id="about-site-btn-two" style="margin-top: 20px"
                target="" rel="" class="btn" href="">About this site</a>
 
         </div>
@@ -157,7 +167,9 @@
     </div>
 </div>
 
-<div class="showcase-area">
+<div class="showcase-area" id="showcase-area">
+    <h1 style=" margin-top: 20%; font-size: xxx-large; margin-left: 40%; padding-top: 10%">Skill showcase</h1>
+
     <div class="showcase-container">
         <div class="scraped-movies">
             <div class="module-title">
@@ -178,7 +190,7 @@
                     <p th:text="'Rating: ' + ${el.vote_average()}"
                        style=" margin-top: 0;margin-right: 1rem; margin-bottom: 3px;"></p>
                     <a th:href="'https://www.themoviedb.org/movie/' + ${el.id()}"
-                       th:text="'Visit here'" style="margin-right: auto"></a>
+                       th:text="'Visit here'" style="margin-right: auto; text-decoration: none; color: gold" ></a>
                 </li>
             </ol>
         </div>
@@ -187,8 +199,8 @@
                 <h2>Spring security</h2>
             </div>
             <div class="login-form">
-                <div th:unless="${#authentication.name eq 'anonymousUser'}" class="login" style="font-size: larger">
-                    <a th:href="@{/logout}">Logout</a>
+                <div th:unless="${#authentication.name eq 'anonymousUser'}" class="login" >
+                    <a th:href="@{/logout} " class="btn" >Logout</a>
                 </div>
                 <div th:if="${#authentication.name eq 'anonymousUser'}" class="login">
                     <form id="loginForm" method="post" th:action="@{/login}" autocomplete="off">

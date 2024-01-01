@@ -73,6 +73,10 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
         scrollToTarget('about-me-area');
     });
+    document.getElementById('header-about-me-button').addEventListener('click', function (e) {
+        e.preventDefault();
+        scrollToTarget('about-me-area');
+    });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -84,12 +88,27 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
         scrollToTarget('about-site-area');
     });
+    document.getElementById('header-about-site-button').addEventListener('click', function (e) {
+        e.preventDefault();
+        scrollToTarget('about-site-area');
+    });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('my-skills-btn').addEventListener('click', function (e) {
         e.preventDefault();
         scrollToTarget('my-skills-area');
+    });
+    document.getElementById('header-skills-button').addEventListener('click', function (e) {
+        e.preventDefault();
+        scrollToTarget('my-skills-area');
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('header-showcase-button').addEventListener('click', function (e) {
+        e.preventDefault();
+        scrollToTarget('showcase-area');
     });
 
 });

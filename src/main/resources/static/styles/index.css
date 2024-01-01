@@ -5,10 +5,43 @@ html {
 }
 
 body {
-    background: linear-gradient(180deg, #240972 0%, #7f54f3 100%);
+    background: linear-gradient(180deg, #240972 0%, #343eb1 100%);
     min-height: 100vh;
     word-break: break-word;
     font-family: 'Bebas Neue', sans-serif;
+}
+
+.header {
+    font-size: x-large;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    height: 10vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: wheat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.contacts {
+    flex-direction: column;
+    margin-left: 5%;
+    font-size: medium;
+    align-items: unset;
+    display: flex;
+}
+
+.header a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: inherit;
 }
 
 .intro-area {
@@ -21,36 +54,43 @@ body {
     width: 100%;
     top: 30%;
     height: 35vh;
-    align-items: center;
+    position: relative;
     display: flex;
+    align-items: center;
 }
 
 .intro-text {
     font-size: larger;
     position: relative;
     margin-left: 25%;
-    width: 75%;
+    width: fit-content;
     height: 100%;
     color: wheat;
+    min-width: 30vh;
 }
 
 .intro-photo {
-    width: 25%;
-    height: 50%;
-
+    margin-right: 10%;
+    margin-left: 10%;
+    width: 50%;
+    height: 100%;
+    max-width: 30vh;
+    object-fit: contain;
 }
 
 #my-photo {
-    width: 90%;
-    height: auto;
+    height: 100%;
+    width: 100%;
+    border: solid grey 10px;
+    border-radius: 20px;
     filter: grayscale(100%);
-    transition-duration: 1s;
-    border-radius: 10px;
 }
 
 #my-photo:hover {
-    width: 100%;
+    width: 110%;
+    height: 110%;
     filter: grayscale(0%);
+    border: solid black 10px;
     transition-duration: 1s;
 
 }
@@ -87,6 +127,7 @@ body {
 }
 
 .about-site-container {
+    margin-top: 10vh;
     width: 100%;
     height: fit-content;
     align-items: center;
@@ -154,7 +195,7 @@ body {
 
 .showcase-area {
     min-height: 100vh;
-    display: flex;
+    display: block;
     align-items: center;
 }
 
@@ -209,12 +250,21 @@ body {
 }
 
 .btn {
+    color:rgba(255, 255, 255, 0.85);
+    margin-right: 15px;
+    border-color:wheat;
+    background-color:black;
     display: inline-block;
     border-style: solid;
     border-width: 2px;
     padding: 15px 25px;
     border-radius: 4px;
     text-decoration: none;
+}
+
+.btn:hover {
+    background:wheat;
+    color: black;
 }
 
 
