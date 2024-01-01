@@ -11,13 +11,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @RequiredArgsConstructor
-public class SelfpromoApplication implements CommandLineRunner {
+public class BenediktVitekSpaceApp implements CommandLineRunner {
 
 	private final RoleRepository roleRepository;
 	private final UserEntityRepository userEntityRepository;
 
 	public static void main(String[] args) {
-		SpringApplication.run(SelfpromoApplication.class, args);
+		SpringApplication.run(BenediktVitekSpaceApp.class, args);
 	}
 
 	@Override
