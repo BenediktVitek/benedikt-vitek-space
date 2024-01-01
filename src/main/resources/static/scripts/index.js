@@ -60,6 +60,14 @@ function scrollToTarget(targetId) {
     }
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    var loginFailedMessage = document.getElementById('login-failed');
+
+    if (loginFailedMessage) {
+        loginFailedMessage.scrollIntoView({ behavior: 'smooth' });
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('about-me-btn').addEventListener('click', function (e) {
         e.preventDefault();

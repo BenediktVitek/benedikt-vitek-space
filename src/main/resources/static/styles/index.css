@@ -161,7 +161,51 @@ body {
 .showcase-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    box-sizing: border-box;
+    border: 4px solid wheat;
+    color: wheat;
+    background-color: black;
+    border-radius: 10px;
 
+}
+
+.users, .scraped-movies, .tmdb-info, .comments, .API {
+    box-sizing: border-box;
+    border: 4px solid wheat;
+    color: wheat;
+    background-color: black;
+}
+
+.module-title {
+    border-bottom: solid;
+    border-radius: 10px;
+    justify-content: center;
+    display: flex;
+}
+
+#comment-section {
+    margin-left: 5px;
+    margin-top: 10px;
+    height: 50%;
+}
+#comment {
+    width: 90%;
+    height: 70%;
+    resize: none;
+}
+
+.login-form, .register {
+    padding: 3px;
+}
+
+#allAuthors {
+    display: flex;
+    justify-content: center;
+}
+
+#todayPosts {
+    display: flex;
+    justify-content: center;
 }
 
 .btn {
@@ -209,3 +253,55 @@ body {
     }
 }
 
+.form-button {
+    margin: 5px;
+    --b: 3px; /* border thickness */
+    --s: .45em; /* size of the corner */
+    --color: wheat;
+
+    padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+    color: var(--color);
+    --_p: var(--s);
+    background: conic-gradient(from 90deg at var(--b) var(--b), #0000 90deg, var(--color) 0) var(--_p) var(--_p)/calc(100% - var(--b) - 2 * var(--_p)) calc(100% - var(--b) - 2 * var(--_p));
+    transition: .3s linear, color 0s, background-color 0s;
+    outline: var(--b) solid #0000;
+    outline-offset: .6em;
+    font-size: 16px;
+
+    border: 0;
+
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.form-button:hover,
+.form-button:focus-visible {
+    --_p: 0px;
+    outline-color: var(--color);
+    outline-offset: .05em;
+}
+
+.form-button:active {
+    background: var(--color);
+    color: #fff;
+}
+
+.input {
+    margin-left: 3px;
+    border: 2px solid wheat;
+    border-radius: 5px;
+    height: 5%;
+    line-height: normal;
+    color: #282828;
+    display: block;
+    width: 90%;
+    box-sizing: border-box;
+    user-select: auto;
+    font-size: 16px;
+    padding: 0 6px 0 12px;
+}
+
+.input:focus {
+    border: 3px solid #5551ff;
+}
