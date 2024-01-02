@@ -137,24 +137,37 @@
 
 <div id="about-site-area" class="about-site-area">
     <div class="about-site-container">
-        <div class="about-site-text">
+        <div class="about-site-text" style="color: wheat">
             <h2>About this site</h2>
-            <p>Welcome to my showcase, where I demonstrate my proficiency in Java through interactive sections highlighting various skills. Here's a breakdown of what you'll find:</p>
+            <p>Welcome to my showcase, where I demonstrate my proficiency in Java through interactive sections
+                highlighting various skills. Here's a breakdown of what you'll find:</p>
 
-            <p>Section 1 - Web scraping: Explore the top 10 most-watched movies on Netflix obtained through web scraping. Titles are encoded for use in the following section.</p>
+            <p>Section 1 - Web scraping: Explore the top 10 most-watched movies on Netflix obtained through web
+                scraping. Titles are encoded for use in the following section.</p>
 
-            <p>Section 2 - Using third party APIs: Discover movie information sourced from TMDB APIs, including ratings and direct links to each movie on TMDB.</p>
+            <p>Section 2 - Using third party APIs: Discover movie information sourced from TMDB APIs, including ratings
+                and direct links to each movie on TMDB.</p>
 
-            <p>Section 3 - Spring security: Experience the functionality of user login and registration. Password strength is intentionally not enforced for easy testing. Registering a user creates a user entity stored in the database.</p>
+            <p>Section 3 - Spring security: Experience the functionality of user login and registration. Password
+                strength is intentionally not enforced for easy testing. Registering a user creates a user entity stored
+                in the database.</p>
 
-            <p>Section 4 - Relational database: Add comments as an anonymous user or under your registered user profile. This establishes a relationship between user and comment entities, saving the comments in the database.</p>
+            <p>Section 4 - Relational database: Add comments as an anonymous user or under your registered user profile.
+                This establishes a relationship between user and comment entities, saving the comments in the
+                database.</p>
 
-            <p>Section 5 - Building APIs: Explore comments made on this site. Each response is crafted using DTOs, and the response format is in JSON.</p>
+            <p>Section 5 - Building APIs: Explore comments made on this site. Each response is crafted using DTOs, and
+                the response format is in JSON.</p>
 
-            <p>Feel free to navigate through these sections to witness firsthand the practical application of my Java skills. Don't hesitate to provide feedback or explore my GitHub and my resume for a comprehensive view of my projects and expertise.</p>
+            <p>Feel free to navigate through these sections to witness firsthand the practical application of my Java
+                skills. Don't hesitate to provide feedback or explore my GitHub and my resume for a comprehensive view
+                of my projects and expertise.</p>
+            <a id="showcase-area-btn" style="margin-top: 20px"
+               target="" rel="" class="btn" href="">Skill showcase</a>
         </div>
     </div>
 </div>
+
 
 <div class="showcase-area" id="showcase-area">
     <h1 style=" margin-top: 20%; font-size: xxx-large; margin-left: 40%; padding-top: 10%">Skill showcase</h1>
@@ -165,7 +178,8 @@
                 <h2>Web scraping</h2>
             </div>
             <ol>
-                <li th:each="el : ${movieList}" th:text="${el.title()}"></li>
+                <li th:each="el : ${movieList}" th:text="${el.title()}"
+                    style="padding-bottom: 2px"></li>
             </ol>
         </div>
         <div class="tmdb-info">
@@ -174,7 +188,7 @@
             </div>
             <ol style="padding-left: 5px">
 
-                <li th:each="el, stat : ${movieList}" style="display: flex">
+                <li th:each="el, stat : ${movieList}" style="display: grid; grid-template-columns: 3fr 8fr 6fr;">
                     <span th:text="${stat.index + 1 + '. '}" style="margin-right: 1rem;"></span>
                     <p th:text="'Rating: ' + ${el.vote_average()}"
                        style=" margin-top: 0;margin-right: 1rem; margin-bottom: 3px;"></p>
@@ -188,8 +202,13 @@
                 <h2>Spring security</h2>
             </div>
             <div class="login-form">
-                <div th:unless="${#authentication.name eq 'anonymousUser'}" class="login">
-                    <a th:href="@{/logout} " class="btn">Logout</a>
+                <div th:unless="${#authentication.name eq 'anonymousUser'}" class="login"
+                     style="color: green; ">
+                    <p id="login-success" th:if="${loginSuccess != null}" th:text="${loginSuccess}"
+                       style="display: flex; justify-content: center"
+                    ></p>
+                    <a th:href="@{/logout} " class="btn"
+                       style="display: flex; justify-content: center; margin-right: 0">Logout</a>
                 </div>
                 <div th:if="${#authentication.name eq 'anonymousUser'}" class="login">
                     <form id="loginForm" method="post" th:action="@{/login}" autocomplete="off">
@@ -207,6 +226,10 @@
 
                 </div>
                 <div class="register">
+                    <div id="registration-success" th:if="${registrationSuccess != null}">
+                        <p th:text="${registrationSuccess}"
+                           style="color: green; display: flex; justify-content: center"></p>
+                    </div>
                     <form id="register-form" method="post" th:action="@{/register}">
                         <label for="registerUsername">Username:</label>
                         <input class="input" type="text" id="registerUsername" th:name="username" required>
@@ -228,13 +251,17 @@
             <div class="module-title">
                 <h2>Relational database</h2>
             </div>
+            <div id="comment-success" th:if="${commentSuccess != null}">
+                <p th:text="${commentSuccess}"
+                   style="color: green; display: flex; justify-content: center"></p>
+            </div>
             <form id="comment-section" method="post" th:action="@{/add-comment}">
                 <label for="comment">Comment: </label>
                 <textarea id="comment" th:name="comment" required maxlength="140" autocomplete="off"></textarea>
                 <button class="form-button">Send</button>
             </form>
             <p th:if="${#authentication.name eq 'anonymousUser'}" th:text="'Commenting as Anonymous'"
-               style="padding: 20%;font-size: large;"></p>
+               style="display: flex;padding-top: 10px; justify-content: center; font-size: large;"></p>
             <p th:unless="${#authentication.name eq 'anonymousUser'}"
                th:text="'Commenting as ' + ${#authentication.name}"
                style="padding: 20%;font-size: large;"></p>

@@ -33,9 +33,10 @@ public class UserController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             httpSession.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
                     SecurityContextHolder.getContext());
+            redirectAttributes.addFlashAttribute("loginSuccess", "Logged in successfully!");
             return "redirect:/index";
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("loginMessage", "Wrong username or password");
+            redirectAttributes.addFlashAttribute("loginFailed", "Wrong username or password");
             return "redirect:/index";
         }
     }
@@ -46,10 +47,11 @@ public class UserController {
                            RedirectAttributes redirectAttributes) {
 
         if (userEntityRepository.existsByUsername(username)) {
-            redirectAttributes.addFlashAttribute("registerMessage", "This user already exists");
+            redirectAttributes.addFlashAttribute("registerFailed", "This user already exists");
             return "redirect:/index";
         }
         userEntityService.saveNew(username, password);
+        redirectAttributes.addFlashAttribute("registrationSuccess", "Registration successful!");
 
         return "redirect:/index";
 

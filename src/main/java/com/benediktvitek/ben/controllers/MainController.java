@@ -13,7 +13,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 import java.io.IOException;
-import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
@@ -30,21 +29,24 @@ public class MainController {
         List<MovieDTO> moviesWithRatings = null;
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
 
-
         try {
             moviesWithRatings = movieService.getTopTenMoviesDto();
         } catch (IOException e) {
             System.out.println("Exception: " + e.getMessage());
         }
-
         if (inputFlashMap != null) {
-            if (inputFlashMap.get("registerMessage") != null) {
+            if (inputFlashMap.get("registerFailed") != null) {
                 model.addAttribute("registerFailed", inputFlashMap.get("registerMessage"));
-            } else if (inputFlashMap.get("loginMessage") != null) {
+            } else if (inputFlashMap.get("loginFailed") != null) {
                 model.addAttribute("loginFailed", inputFlashMap.get("loginMessage"));
+            } else if (inputFlashMap.get("loginSuccess") != null) {
+                model.addAttribute("loginSuccess", inputFlashMap.get("loginSuccess"));
+            } else if (inputFlashMap.get("registrationSuccess") != null) {
+                model.addAttribute("registrationSuccess", inputFlashMap.get("registrationSuccess"));
+            } else if (inputFlashMap.get("commentSuccess") != null) {
+                model.addAttribute("commentSuccess", inputFlashMap.get("commentSuccess"));
             }
         }
-
         model.addAttribute("movieList", moviesWithRatings);
 
         return "index";
@@ -59,6 +61,7 @@ public class MainController {
         } catch (BadRequestException e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
+        redirectAttributes.addFlashAttribute("commentSuccess", "Comment added!");
         return "redirect:/index";
     }
 

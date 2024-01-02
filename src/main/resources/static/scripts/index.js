@@ -61,11 +61,14 @@ function scrollToTarget(targetId) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    var loginFailedMessage = document.getElementById('login-failed');
+    var elementsToScroll = ['login-failed', 'login-success', 'comment-success', 'registration-success'];
 
-    if (loginFailedMessage) {
-        loginFailedMessage.scrollIntoView({ behavior: 'smooth' });
-    }
+    elementsToScroll.forEach(function(elementId) {
+        var element = document.getElementById(elementId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'instant' });
+        }
+    });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -106,6 +109,12 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
         scrollToTarget('showcase-area');
     });
+
+    document.getElementById('showcase-area-btn').addEventListener('click', function (e) {
+        e.preventDefault();
+        scrollToTarget('showcase-area');
+    });
+
 
 });
 
