@@ -84,10 +84,6 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
         scrollToTarget('about-site-area');
     });
-    document.getElementById('about-site-btn-two').addEventListener('click', function (e) {
-        e.preventDefault();
-        scrollToTarget('about-site-area');
-    });
     document.getElementById('header-about-site-button').addEventListener('click', function (e) {
         e.preventDefault();
         scrollToTarget('about-site-area');

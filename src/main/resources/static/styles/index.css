@@ -47,48 +47,45 @@ body {
 .intro-area {
     min-height: 100vh;
     display: flex;
-    align-items: center;
 }
 
 .intro-container {
-    width: 100%;
-    top: 30%;
-    height: 35vh;
-    position: relative;
-    display: flex;
-    align-items: center;
+    position: absolute;
+    top: 35%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .intro-text {
     font-size: larger;
+    padding-left: 20%;
     position: relative;
     margin-left: 25%;
     width: fit-content;
-    height: 100%;
     color: wheat;
     min-width: 30vh;
+    height: fit-content;
 }
 
 .intro-photo {
-    margin-right: 10%;
-    margin-left: 10%;
-    width: 50%;
-    height: 100%;
-    max-width: 30vh;
-    object-fit: contain;
+    width: fit-content;
+    height: 50%;
+    place-items: center;
+    margin-left: 5%;
 }
 
 #my-photo {
-    height: 100%;
     width: 90%;
+    height: 90%;
     border: solid grey 10px;
     border-radius: 20px;
     filter: grayscale(100%);
 }
 
 #my-photo:hover {
-    width: 99%;
-    height: 110%;
+    width: 95%;
+    height: 95%;
     filter: grayscale(0%);
     border: solid black 10px;
     transition-duration: 1s;

@@ -36,6 +36,7 @@ public class MovieService {
                 movies = scraper.getScrapedMovies();
                 break;
             } catch (Exception e ) {
+                System.out.println(e.getMessage());
                 if (--numTries == 0) throw e;
                 try {
                     Thread.sleep(1000);
