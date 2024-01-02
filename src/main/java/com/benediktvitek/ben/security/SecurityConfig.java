@@ -37,6 +37,9 @@ public class SecurityConfig {
                                 logout
                                         .deleteCookies("JSESSIONID")
                                         .logoutSuccessUrl("/index")
+                                        .logoutSuccessHandler((request, response, authentication) -> {
+                                            response.sendRedirect("/index#showcase-area");
+                                        })
                 );
         return http.build();
     }

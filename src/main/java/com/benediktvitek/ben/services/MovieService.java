@@ -28,7 +28,7 @@ public class MovieService {
 
 
     public List<MovieDTO> getTopTenMoviesDto() throws IOException {
-        int numTries = 3;
+        int numTries = 5;
         List<MovieDTO> moviesWithRatings = new ArrayList<>();
         List<String> movies = new ArrayList<>();
         while (true) {

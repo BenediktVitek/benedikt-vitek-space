@@ -25,6 +25,7 @@ out/
 !**/src/test/**/out/
 application.properties
 
+
 ## PyCharm
 *.iml
 modules.xml
