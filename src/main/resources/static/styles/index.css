@@ -81,6 +81,7 @@ body {
     border: solid grey 10px;
     border-radius: 20px;
     filter: grayscale(100%);
+    transition-duration: 1s;
 }
 
 #my-photo:hover {
