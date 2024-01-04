@@ -61,7 +61,7 @@ public class MainController {
         } catch (BadRequestException e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
-        redirectAttributes.addFlashAttribute("commentSuccess", "Comment added!");
+        redirectAttributes.addFlashAttribute("commentSuccess", "Comment added! Check it here -->");
         return "redirect:/index";
     }
 
