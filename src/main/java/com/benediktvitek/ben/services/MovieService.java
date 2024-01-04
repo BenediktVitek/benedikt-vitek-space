@@ -56,7 +56,7 @@ public class MovieService {
                      .url("https://api.themoviedb.org/3/search/movie?query=" + encodedMovie + "&include_adult=false&language=en-US&page=1")
                     .get()
                     .addHeader("accept", "application/json")
-                    .addHeader("Authorization", token)
+                    .addHeader("Authorization", "Bearer " + System.getenv("TMDB_API_KEY"))
                     .build();
 
             try (Response response = okHttpClient.newCall(request).execute();) {
