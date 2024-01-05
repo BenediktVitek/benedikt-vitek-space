@@ -5,10 +5,17 @@ plugins {
 	id 'application'
 }
 
+bootJar {
+	archiveClassifier.set('boot')
+}
+
+jar {
+	archiveClassifier.set('')
+}
+
 application {
 	mainClassName = 'com.benediktvitek.ben.BenediktVitekSpaceApp'
 }
-
 group = 'com.benedikt-vitek'
 version = '0.0.1-SNAPSHOT'
 
