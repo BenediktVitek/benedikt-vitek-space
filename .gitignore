@@ -4,8 +4,6 @@
 *.bak
 *.tmp
 logs
-src/main/resources/application.properties
-
 
 ### Mac OS
 .DS_Store
@@ -23,8 +21,6 @@ out
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-application.properties
-
 
 ## PyCharm
 *.iml
