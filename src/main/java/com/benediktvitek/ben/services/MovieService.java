@@ -23,7 +23,7 @@ public class MovieService {
 
     private final Scraper scraper;
 
-    @Value("${API_TOKEN}")
+    @Value("${TMDB_API_TOKEN}")
     private String token;
 
 
@@ -56,7 +56,7 @@ public class MovieService {
                      .url("https://api.themoviedb.org/3/search/movie?query=" + encodedMovie + "&include_adult=false&language=en-US&page=1")
                     .get()
                     .addHeader("accept", "application/json")
-                    .addHeader("Authorization", "Bearer " + System.getenv("TMDB_API_KEY"))
+                    .addHeader("Authorization", "Bearer " + token)
                     .build();
 
             try (Response response = okHttpClient.newCall(request).execute();) {
