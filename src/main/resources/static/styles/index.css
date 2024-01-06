@@ -149,6 +149,13 @@ body {
     align-items: center;
 }
 
+.my-skills-area h1 {
+    color: wheat;
+    font-size: xxx-large;
+    margin-left: 20%;
+    padding-top: 15%;
+}
+
 .my-skills-container {
     width: 100%;
     height: 35vh;
