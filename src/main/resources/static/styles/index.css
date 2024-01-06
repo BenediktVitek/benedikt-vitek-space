@@ -362,6 +362,10 @@ body {
 }
 
 @media screen and (max-width: 768px) {
+
+    .intro-area {
+        min-height: unset;
+    }
     .intro-container {
         width: 100%;
         grid-template-columns: 1fr;
@@ -377,6 +381,9 @@ body {
         white-space: nowrap;
     }
 
+    .intro-area {
+        padding-top: 30%;
+    }
     .intro-text {
         padding: 0;
         width: 100%;
