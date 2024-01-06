@@ -36,7 +36,7 @@ public class MainController {
         }
         if (inputFlashMap != null) {
             if (inputFlashMap.get("registerFailed") != null) {
-                model.addAttribute("registerFailed", inputFlashMap.get("registerMessage"));
+                model.addAttribute("registrationFailed", inputFlashMap.get("registerMessage"));
             } else if (inputFlashMap.get("loginFailed") != null) {
                 model.addAttribute("loginFailed", inputFlashMap.get("loginFailed"));
             } else if (inputFlashMap.get("loginSuccess") != null) {

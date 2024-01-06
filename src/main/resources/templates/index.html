@@ -233,6 +233,10 @@
                         <p th:text="${registrationSuccess}"
                            style="color: green; display: flex; justify-content: center"></p>
                     </div>
+                    <div id="registration-failed" th:if="${registrationFailed != null}">
+                        <p th:text="${registrationFailed}"
+                           style="color: red; display: flex; justify-content: center"></p>
+                    </div>
                     <form id="register-form" method="post" th:action="@{/register}">
                         <label for="registerUsername">Username:</label>
                         <input class="input" type="text" id="registerUsername" th:name="username" required>

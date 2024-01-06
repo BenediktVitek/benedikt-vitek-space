@@ -61,7 +61,7 @@ function scrollToTarget(targetId) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    var elementsToScroll = ['login-failed', 'login-success', 'comment-success', 'registration-success'];
+    var elementsToScroll = ['login-failed', 'login-success', 'comment-success', 'registration-success', 'registration-failed'];
 
     function scrollToElement(elementId) {
         var element = document.getElementById(elementId);

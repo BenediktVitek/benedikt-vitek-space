@@ -47,7 +47,7 @@ public class UserController {
                            RedirectAttributes redirectAttributes) {
 
         if (userEntityRepository.existsByUsername(username)) {
-            redirectAttributes.addFlashAttribute("registerFailed", "This user already exists");
+            redirectAttributes.addFlashAttribute("registrationFailed", "This user already exists");
             return "redirect:/index";
         }
         userEntityService.saveNew(username, password);
