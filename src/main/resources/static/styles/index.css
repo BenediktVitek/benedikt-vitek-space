@@ -145,24 +145,22 @@ body {
 
 .my-skills-area {
     min-height: 100vh;
-    display: flex;
+    display: block;
     align-items: center;
 }
 
 .my-skills-area h1 {
     color: wheat;
     font-size: xxx-large;
-    margin-left: 20%;
-    padding-top: 15%;
 }
 
 .my-skills-container {
-    width: 100%;
+    width: 70%;
     height: 35vh;
     margin-left: 20%;
-    margin-right: 20%;
     margin-bottom: 20%;
     color: wheat;
+    padding-top: 10%;
     font-size: x-large;
 }
 
@@ -317,8 +315,8 @@ body {
 
 .form-button {
     margin: 5px;
-    --b: 3px; /* border thickness */
-    --s: .45em; /* size of the corner */
+    --b: 3px;
+    --s: .45em;
     --color: wheat;
 
     padding: calc(.5em + var(--s)) calc(.9em + var(--s));
@@ -371,7 +369,11 @@ body {
 @media screen and (max-width: 768px) {
 
     .intro-area {
-        min-height: unset;
+        min-height: 100vh;
+    }
+
+    .intro-text {
+        padding-left: unset;
     }
     .intro-container {
         width: 100%;
@@ -417,7 +419,7 @@ body {
         display: block;
     }
     .my-skills-area h1 {
-        padding-top: 32%;
+        padding-top: 17%;
     }
 
     .skill-buttons {
