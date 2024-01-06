@@ -63,12 +63,17 @@ function scrollToTarget(targetId) {
 document.addEventListener('DOMContentLoaded', function() {
     var elementsToScroll = ['login-failed', 'login-success', 'comment-success', 'registration-success'];
 
-    elementsToScroll.forEach(function(elementId) {
+    function scrollToElement(elementId) {
         var element = document.getElementById(elementId);
         if (element) {
-            element.scrollIntoView({ behavior: 'instant' });
+            window.location.hash = elementId;
         }
+    }
+
+    elementsToScroll.forEach(function(elementId) {
+        scrollToElement(elementId);
     });
+
 });
 
 document.addEventListener('DOMContentLoaded', function () {
