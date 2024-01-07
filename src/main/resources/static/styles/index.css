@@ -120,6 +120,7 @@ body {
 .about-site-area {
     min-height: 100vh;
     display: flex;
+    margin-left: 10%;
     align-items: center;
     height: fit-content;
 }
@@ -137,7 +138,7 @@ body {
     font-size: x-large;
     position: relative;
     margin-left: 10%;
-    margin-right: 15%;
+    margin-right: 10%;
     width: 75%;
     height: 100%;
     color: black;
