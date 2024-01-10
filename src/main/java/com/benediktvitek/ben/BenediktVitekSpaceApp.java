@@ -22,10 +22,12 @@ public class BenediktVitekSpaceApp implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		roleRepository.save(new Role("USER"));
-		UserEntity anon = new UserEntity();
-		anon.setUsername("anonymous");
-		userEntityRepository.save(anon);
 
+		if(!userEntityRepository.existsByUsername("anonymous")) {
+			roleRepository.save(new Role("USER"));
+			UserEntity anon = new UserEntity();
+			anon.setUsername("anonymous");
+			userEntityRepository.save(anon);
+		}
 	}
 }
