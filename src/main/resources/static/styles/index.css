@@ -69,8 +69,8 @@ body {
 }
 
 .intro-photo {
-    width: fit-content;
-    height: 50%;
+    width: 50%;
+    height: 100%;
     place-items: center;
     margin-left: 5%;
 }
@@ -204,7 +204,7 @@ body {
     color: wheat;
 }
 
-.showcase-area h1{
+.showcase-area h1 {
     margin-top: 20%;
     font-size: xxx-large;
     margin-left: 40%;
@@ -240,6 +240,7 @@ body {
     margin-top: 10px;
     height: 50%;
 }
+
 #comment {
     width: 90%;
     height: 70%;
@@ -261,10 +262,10 @@ body {
 }
 
 .btn {
-    color:rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.85);
     margin-right: 15px;
-    border-color:wheat;
-    background-color:black;
+    border-color: wheat;
+    background-color: black;
     display: inline-block;
     border-style: solid;
     border-width: 2px;
@@ -274,7 +275,7 @@ body {
 }
 
 .btn:hover {
-    background:wheat;
+    background: wheat;
     color: black;
 }
 
@@ -376,13 +377,14 @@ body {
     .intro-text {
         padding-left: unset;
     }
+
     .intro-container {
         width: 100%;
         grid-template-columns: 1fr;
         text-align: center;
     }
 
-    .links{
+    .links {
         display: inline-grid;
         font-size: large;
     }
@@ -394,6 +396,7 @@ body {
     .intro-area {
         padding-top: 30%;
     }
+
     .intro-text {
         padding: 0;
         width: 100%;
@@ -419,6 +422,7 @@ body {
     .my-skills-area {
         display: block;
     }
+
     .my-skills-area h1 {
         padding-top: 17%;
     }
@@ -434,6 +438,7 @@ body {
     .skill-buttons {
         display: inline-flex;
     }
+
     .my-skills-container {
         width: 100%;
         height: 35vh;
@@ -466,6 +471,7 @@ body {
         margin-left: 0;
         padding-top: 20vh;
     }
+
     .showcase-container {
         border: unset;
         display: unset;
